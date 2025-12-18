@@ -18,7 +18,7 @@
 
 namespace zyppng {
 
-  enum class TaskState {
+  enum TaskState {
     Pending,  // initially suspended
     Running,  // task is doing work, might wait for another coroutine
     Finished  // task done
@@ -596,6 +596,7 @@ namespace zyppng {
         if constexpr ( std::is_same_v< coro_lazy_execution, Exec> ) {
 
           typename Task<T,Exec>::promise_type &p = _fut.handle().promise ();
+
           switch( p.state() ) {
 
             case TaskState::Pending: {
@@ -610,6 +611,12 @@ namespace zyppng {
             case TaskState::Finished: {
               // no work to be done, directly resume the waiting coroutine
               return cont;
+            }
+            default: {
+              ERR << "Must handle all task states!" << std::endl;
+              std::terminate ();
+              // never going to reach this part
+              return std::noop_coroutine();
             }
           }
 
