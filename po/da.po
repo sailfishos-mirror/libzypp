@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: libzypp\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-11 16:21+0100\n"
-"PO-Revision-Date: 2026-03-06 16:04+0000\n"
+"PO-Revision-Date: 2026-03-24 14:04+0000\n"
 "Last-Translator: Peter Andreasen <noesgaard@gmail.com>\n"
 "Language-Team: Danish <https://l10n.opensuse.org/projects/libzypp/master/da/>"
 "\n"
@@ -346,55 +346,55 @@ msgstr "Anmodningen blev annulleret"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:260
 msgid "The request exceeded the maximum download size"
-msgstr ""
+msgstr "Anmodningen overskred den maksimale størrelse for download"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:262
 msgid "The downloaded data did not result in a valid checksum"
-msgstr ""
+msgstr "De hentede data gav ikke en gyldig kontrolsum"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:264
 msgid "The peer certificate could not be verified"
-msgstr ""
+msgstr "Peer-certifikatet kunne ikke verificeres"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:266
 msgid "Connection failed"
-msgstr ""
+msgstr "Forbindelsen fejlede"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:268
 msgid "Unsupported protocol"
-msgstr ""
+msgstr "Protokollen understøttes ikke"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:270
 msgid "Bad URL"
-msgstr ""
+msgstr "Dårlig URL"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:272
 msgid "Requested location is temporarily unaccessible."
-msgstr ""
+msgstr "Den ønskede side er midlertidigt utilgængelig."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:274
 msgid "Timeout reached"
-msgstr ""
+msgstr "Tiden løb ud"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:276
 msgid "Access to requested URL is forbidden."
-msgstr ""
+msgstr "Adgang til den ønskede URL er forbudt."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:278
 msgid "File not found"
-msgstr ""
+msgstr "Fil ikke fundet"
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:280
 msgid "Authentication required but not provided."
-msgstr ""
+msgstr "Autentificering kræves men blev ikke givet."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:282
 msgid "Login failed."
-msgstr ""
+msgstr "Login fejlede."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:284
 msgid "Server returned an error for the given request."
-msgstr ""
+msgstr "Serveren returnerede en fejl for den givne anmodning."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:286
 msgid "Server did not send all requested ranges."
