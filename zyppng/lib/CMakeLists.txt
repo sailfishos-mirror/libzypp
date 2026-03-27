@@ -41,6 +41,7 @@ target_link_libraries( ${target} ${_link_mode} zyppng-media )
 target_link_libraries( ${target} ${_link_mode} zyppng-core )
 
 target_link_libraries( ${target} ${_link_mode} ${LibSolv_LIBRARIES} )
+target_link_libraries( ${target} ${_link_mode} ${LIBXML2_LIBRARIES} )
 target_link_libraries( ${target} ${_link_mode} ${RPM_LIBRARY} ${RPMIO_LIBRARY} )
 target_link_libraries( ${target} ${_link_mode} ${GETTEXT_LIBRARIES} )
 target_link_libraries( ${target} ${_link_mode} ${Boost_THREAD_LIBRARY})
