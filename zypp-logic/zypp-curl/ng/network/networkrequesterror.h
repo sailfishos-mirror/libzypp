@@ -20,7 +20,7 @@ class NetworkRequestErrorPrivate;
    *
    * \attention Keep in sync with zypp/zyppng/proto/networkrequest.proto !!!
    */
-  class  NetworkRequestError
+  class LIBZYPP_NG_EXPORT NetworkRequestError
   {
   public:
     enum Type {

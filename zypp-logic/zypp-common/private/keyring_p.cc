@@ -11,7 +11,6 @@
 */
 
 #include "keyring_p.h"
-#include "zypp/ZConfig.h"
 
 #include <iostream>
 #include <fstream>
@@ -19,7 +18,7 @@
 #include <sys/file.h>
 #include <unistd.h>
 
-#include <zypp-core/fs/TmpPath.h>
+#include <zypp/TmpPath.h>
 #include <zypp/ZYppFactory.h>
 #include <zypp/ZYpp.h>
 
@@ -29,11 +28,10 @@
 #include <zypp-core/base/Regex.h>
 #include <zypp-core/base/Gettext.h>
 #include <zypp-core/fs/WatchFile>
-#include <zypp-core/fs/PathInfo.h>
+#include <zypp/PathInfo.h>
 #include <zypp-core/ExternalProgram.h>
-#include <zypp-core/fs/TmpPath.h>
+#include <zypp/TmpPath.h>
 #include <zypp-common/KeyManager.h>
-#include <zypp-common/KeyRingException.h>
 
 using std::endl;
 

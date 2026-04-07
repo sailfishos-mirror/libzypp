@@ -34,7 +34,7 @@ class AbstractEventSourcePrivate;
  * In case there is activity on the file descriptor the EventDispatcher wakes up
  * and forwards it to \a onFdReady.
  */
-class  AbstractEventSource : public Base
+class LIBZYPP_NG_EXPORT AbstractEventSource : public Base
 {
   ZYPP_DECLARE_PRIVATE(AbstractEventSource)
 public:

@@ -6,8 +6,6 @@
 #include <string>
 #include <zypp-core/Globals.h>
 
-typedef struct _GMainContext GMainContext;
-
 namespace zyppng
 {
   class EventDispatcher;
@@ -25,7 +23,7 @@ namespace zyppng
     const std::string &name() const;
 
     std::shared_ptr<EventDispatcher> dispatcher();
-    std::shared_ptr<EventDispatcher> ensureDispatcher( GMainContext *ctx = 0 );
+    std::shared_ptr<EventDispatcher> ensureDispatcher();
     void setDispatcher( const std::shared_ptr<EventDispatcher> &disp );
 
 

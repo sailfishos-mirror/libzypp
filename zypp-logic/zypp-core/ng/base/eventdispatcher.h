@@ -21,12 +21,11 @@
 #include <memory>
 #include <functional>
 
-typedef struct _GMainContext            GMainContext;
-
 namespace zyppng {
 
 class SocketNotifier;
 class Timer;
+
 ZYPP_FWD_DECL_TYPE_WITH_REFS( EventDispatcher );
 ZYPP_FWD_DECL_TYPE_WITH_REFS( UnixSignalSource );
 class EventDispatcherPrivate;
@@ -39,7 +38,7 @@ class EventDispatcherPrivate;
  * uses the glib eventloop, just like Qt and GTK, so integrating libzypp here is just a matter of passing the default main context
  * to the constructor of \ref EventDispatcher.
  */
-class  EventDispatcher : public Base
+class LIBZYPP_NG_EXPORT EventDispatcher : public Base
 {
   ZYPP_DECLARE_PRIVATE(EventDispatcher)
   friend class AbstractEventSource;
@@ -47,8 +46,8 @@ class  EventDispatcher : public Base
 
 public:
 
-  using Ptr = EventDispatcherRef;
-  using WeakPtr = EventDispatcherWeakRef;
+  using Ptr = std::shared_ptr<EventDispatcher>;
+  using WeakPtr = std::shared_ptr<EventDispatcher>;
   using IdleFunction = std::function<bool ()>;
   using TimeoutFunction = std::function<bool ()>;
 
@@ -68,11 +67,12 @@ public:
    * \note these can be starved if there are constantly events in the event loop. ONLY use this
    *       if it is fine that they might not be called until all other things have been processed.
    */
-  static void invokeOnIdle ( IdleFunction &&callback )
+  template< typename T = IdleFunction >
+  static void invokeOnIdle ( T &&callback )
   {
     auto ev = instance();
     if ( ev )
-      ev->invokeOnIdleImpl( std::move(callback) );
+      ev->invokeOnIdleImpl( std::forward<T>(callback) );
   }
 
   /*!
@@ -160,14 +160,11 @@ public:
    */
   bool untrackChildProcess ( int pid );
 
-
   /*!
    * Returns the currently active \ref UnixSignalSource for this EventDispatcher.
    * It is required to keep the reference alive as long as signals need to be catched.
    */
   UnixSignalSourceRef unixSignalSource ();
-
-  GMainContext * glibContext();
 
 protected:
 

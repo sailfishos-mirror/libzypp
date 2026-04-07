@@ -29,14 +29,12 @@ namespace zyppng
     return _threadName;
   }
 
-  std::shared_ptr<EventDispatcher> ThreadData::ensureDispatcher( GMainContext *ctx )
+  std::shared_ptr<EventDispatcher> ThreadData::ensureDispatcher()
   {
     auto sp = _dispatcher.lock();
     if (!sp) {
       MIL << "Creating the Event Dispatcher for thread: " << name() << "("<<_threadId<<")" << std::endl;
-      _dispatcher = sp = EventDispatcherPrivate::create( ctx );
-    } else {
-      if ( ctx && ctx != sp->glibContext() ) MIL << "Ignoring passed GMainContext, because a Zypp Event Dispatcher was created before. This might be a bug!" << std::endl;
+      _dispatcher = sp = EventDispatcherPrivate::create();
     }
     return sp;
   }
