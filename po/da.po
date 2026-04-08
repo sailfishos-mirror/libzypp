@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: libzypp\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-11 16:21+0100\n"
-"PO-Revision-Date: 2026-03-24 14:04+0000\n"
+"PO-Revision-Date: 2026-04-08 13:04+0000\n"
 "Last-Translator: Peter Andreasen <noesgaard@gmail.com>\n"
 "Language-Team: Danish <https://l10n.opensuse.org/projects/libzypp/master/da/>"
 "\n"
@@ -398,21 +398,23 @@ msgstr "Serveren returnerede en fejl for den givne anmodning."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:286
 msgid "Server did not send all requested ranges."
-msgstr ""
+msgstr "Serveren sendte ikke alle de ønskede intervaller."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:288
 msgid ""
 "Invalid data from server, multipart was requested but there was no range "
 "status code."
 msgstr ""
+"Ugyldige data fra serveren; flere dele blev anmodet, men der var ingen "
+"statuskode for intervallet."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:290
 msgid "Server returned a HTTP/2 error."
-msgstr ""
+msgstr "Serveren returnerede en HTTP/2 fejl."
 
 #: zypp-logic/zypp-curl/ng/network/networkrequesterror.cc:292
 msgid "Server returned a HTTP/2 stream error."
-msgstr ""
+msgstr "Serveren returnerede en HTTP/2 stream-fejl."
 
 #: zypp-logic/zypp-media/mediaexception.cc:33
 #, c-format, boost-format
@@ -437,7 +439,7 @@ msgstr "Mediet åbnedes ikke under forsøg på at udføre handlingen '%s'."
 #: zypp-logic/zypp-media/mediaexception.cc:59
 #, c-format, boost-format
 msgid "File '%s' not found"
-msgstr ""
+msgstr "Filen '%s' findes ikke"
 
 #: zypp-logic/zypp-media/mediaexception.cc:66
 #, c-format, boost-format
@@ -551,7 +553,7 @@ msgstr " SSL-certifikatproblem. Tjek at CA-certifikatet er OK for '%s'."
 
 #: zypp-logic/zypp-media/mediaexception.cc:223
 msgid "No free ressources available to attach medium."
-msgstr ""
+msgstr "Ingen tilgængelige ressourcer til at tilkoble mediet."
 
 #: zypp-logic/zypp/CountryCode.cc:50
 msgid "Unknown country: "
@@ -4181,7 +4183,7 @@ msgstr "Følgende handlinger udføres:"
 
 #: zypp-logic/zypp/RepoInfo.cc:218
 msgid "Failed to fetch mirrorlist/metalink data."
-msgstr ""
+msgstr "Kunne ikke hente data for mirror-liste/metalink."
 
 #: zypp-logic/zypp/VendorSupportOptions.cc:14
 msgid "unknown"
@@ -4209,7 +4211,7 @@ msgstr "Yderligere kundekontrakt nødvendig"
 
 #: zypp-logic/zypp/VendorSupportOptions.cc:31
 msgid "Discontinued and superseded by a different package"
-msgstr ""
+msgstr "Udgået og erstattet af en anden pakke"
 
 #: zypp-logic/zypp/VendorSupportOptions.cc:33
 msgid "invalid"
