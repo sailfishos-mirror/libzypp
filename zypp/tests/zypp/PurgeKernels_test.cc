@@ -343,6 +343,7 @@ namespace  {
         }
       },
       // rc kernels have a special naming hack because upstream uses characters that are forbidden in rpm versions
+      // "\.0-rc" -> "~rc" or ".rc"
       TestSample {
         TESTS_SRC_DIR"/zypp/data/PurgeKernels/rckrnl",
         "5.13.0-rc7-17-default",
@@ -350,7 +351,21 @@ namespace  {
         "running",
         {
           { "kernel-default-5.13.rc7-16.1.x86_64" },
-          { "kernel-default-5.13~rc7-18.1.x86_64" }
+          { "kernel-default-5.13~rc7-18.1.x86_64" },
+          { "kernel-default-5.13.1-19.1.x86_64" },
+        }
+      },
+      // rc kernels have a special naming hack because upstream uses characters that are forbidden in rpm versions
+      // (not \.0)-rc[0-9]+ -> is stripped
+      TestSample {
+        TESTS_SRC_DIR"/zypp/data/PurgeKernels/rckrnl",
+        "5.13.1-rc7-19-default",
+        Arch("x86_64"),
+        "running",
+        {
+          { "kernel-default-5.13.rc7-16.1.x86_64" },
+          { "kernel-default-5.13~rc7-17.1.x86_64" },
+          { "kernel-default-5.13~rc7-18.1.x86_64" },
         }
       },
     };
