@@ -11,7 +11,7 @@
 */
 
 #include <zypp-core/base/String.h>
-#include <zypp-core/base/Logger.h>
+#include <zypp-core/base/LogTools.h>
 #include <zypp-core/base/Regex.h>
 #include <zypp-core/base/Iterator.h>
 #include <zypp/PurgeKernels.h>
@@ -96,7 +96,7 @@ namespace zypp {
       auto makeRcVariant = [ &release ]( std::string myVersion, const std::string &replace ){
         // from purge-kernels script, was copied from kernel-source/rpm/mkspec
         myVersion = str::regex_substitute( myVersion, str::regex( "\\.0-rc", str::regex::match_extended ), replace, true );
-        myVersion = str::regex_substitute( myVersion, str::regex( "-rc\\d+", str::regex::match_extended ), "", true );
+        myVersion = str::regex_substitute( myVersion, str::regex( "-rc[0-9]+", str::regex::match_extended ), "", true );
         myVersion = str::regex_substitute( myVersion, str::regex( "-", str::regex::match_extended ), ".", true );
         return Edition( myVersion, release );
       };

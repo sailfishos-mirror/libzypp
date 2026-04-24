@@ -32,3 +32,13 @@ kernel-default = 5.13~rc7-18.1
 -Prv:
 =Vnd: openSUSE
 
+=Pkg: kernel-default 5.13.1 19.1 x86_64
++Prv:
+multiversion(kernel)
+kernel-default-5.13.1-19.1
+kernel = 5.13.1-19.1
+kernel-uname-r = 5.13-1-rc7-19-default
+kernel-default = 5.13.1-19.1
+-Prv:
+=Vnd: openSUSE
+
