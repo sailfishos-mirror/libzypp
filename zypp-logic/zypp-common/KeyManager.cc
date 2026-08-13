@@ -69,10 +69,9 @@ namespace zypp
     std::ostream & operator<<( std::ostream & str, const GpgmeErr & obj )
     { return str << "<" << gpgme_strsource(obj) << "> " << gpgme_strerror(obj); }
 
-    GpgmeKeyPtr findKeyById( gpgme_ctx_t ctx, const std::string & id )
+    bool findKeyById( gpgme_ctx_t ctx, const std::string & id, GpgmeKeyPtr & foundKey )
     {
       GpgmeErr err = GPG_ERR_NO_ERROR;
-      GpgmeKeyPtr foundKey( nullptr, gpgme_key_release );
 
       gpgme_key_t key = nullptr;
       gpgme_op_keylist_start( ctx, NULL, 0 );
@@ -85,13 +84,13 @@ namespace zypp
       }
       gpgme_op_keylist_end( ctx );
 
-      return foundKey;
+      return bool( foundKey );
     }
 
     bool exportKeyData( gpgme_ctx_t ctx, const std::string & id, ByteArray & keydata )
     {
-      GpgmeKeyPtr foundKey { findKeyById( ctx, id ) };
-      if ( ! foundKey ) {
+      GpgmeKeyPtr foundKey( nullptr, gpgme_key_release );
+      if ( ! findKeyById( ctx, id, foundKey ) ) {
         WAR << "Key " << id << "not found" << endl;
         return false;
       }
