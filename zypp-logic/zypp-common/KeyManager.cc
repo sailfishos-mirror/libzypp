@@ -84,7 +84,7 @@ namespace zypp
       }
       gpgme_op_keylist_end( ctx );
 
-      return bool( foundKey );
+      return foundKey.get() != nullptr;
     }
 
     bool exportKeyData( gpgme_ctx_t ctx, const std::string & id, ByteArray & keydata )
