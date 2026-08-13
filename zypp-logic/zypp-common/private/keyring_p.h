@@ -183,6 +183,7 @@ namespace zypp {
       { return ring == Ring::General ? _general_tmp_dir.path() : _trusted_tmp_dir.path(); }
 
       void importKey( const Pathname & keyfile, const Pathname & keyring );
+      void sendKey( const std::string & id, KeyManagerCtx & source, CachedPublicKeyData::Manip & target );
 
       PublicKey exportKey( const std::string & id, const Pathname & keyring ) const;
       PublicKey exportKey( const PublicKeyData & keyData, const Pathname & keyring ) const;

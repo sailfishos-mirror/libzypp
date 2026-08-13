@@ -184,9 +184,11 @@ namespace zypp
 
       if ( mustUpdate ) {
         importKey( key.path(), keyRingPath( Ring::General ) );   // this imports all in the file
+        KeyManagerCtx sourceCtx { KeyManagerCtx::createForOpenPGP( keyRingPath( Ring::General ) ) };
+        CachedPublicKeyData::Manip trustedManip { keyRingManip( keyRingPath( Ring::Trusted ) ) };
         for ( const PublicKeyData & keyData : trustedToUpdate ) {
-          // export-import the individual keys! Never the complete file.
-          importKey( exportKey( keyData, Ring::General ), Ring::Trusted );
+          // transfer the individual keys only! Never the complete file.
+          sendKey( keyData.id(), sourceCtx, trustedManip );
         }
       }
     }
@@ -233,6 +235,16 @@ namespace zypp
 
     CachedPublicKeyData::Manip manip { keyRingManip( keyring ) }; // Provides the context if we want to manip a cached keyring.
     if ( ! manip.keyManagerCtx().importKey( keyfile ) )
+      ZYPP_THROW(KeyRingException(_("Failed to import key.")));
+  }
+
+  void KeyRingImpl::sendKey( const std::string & id, KeyManagerCtx & source, CachedPublicKeyData::Manip & target )
+  {
+    ByteArray keydata;
+    if ( ! source.exportKey( id, keydata ) )
+      ZYPP_THROW(KeyRingException(_("Failed to export key.")));
+
+    if ( ! target.keyManagerCtx().importKey( keydata ) )
       ZYPP_THROW(KeyRingException(_("Failed to import key.")));
   }
 
@@ -370,4 +382,3 @@ namespace zypp
   }
 
 } // namespace zypp
-

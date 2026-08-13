@@ -66,6 +66,9 @@ class KeyManagerCtx
         /** Exports the key with \a id into the given \a stream, returns true on success */
         bool exportKey(const std::string & id, std::ostream & stream);
 
+        /** Exports the key with \a id into the given \a buffer, returns true on success */
+        bool exportKey(const std::string & id, ByteArray & keydata);
+
         /** Tries to import a key from \a keyfile, returns true on success */
         bool importKey(const Pathname & keyfile);
 
