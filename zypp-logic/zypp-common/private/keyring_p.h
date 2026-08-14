@@ -179,11 +179,28 @@ namespace zypp {
 
 
     private:
+      class SendKeys
+      {
+      public:
+        SendKeys( KeyRingImpl & keyRing, const Pathname & source, const Pathname & target );
+        SendKeys( KeyRingImpl & keyRing, const Ring source, const Ring target );
+        SendKeys( const SendKeys & ) = delete;
+        SendKeys( SendKeys && ) = delete;
+        SendKeys & operator=( const SendKeys & ) = delete;
+        SendKeys & operator=( SendKeys && ) = delete;
+
+        void operator()( const std::string & id );
+
+      private:
+        KeyManagerCtx _source;
+        CachedPublicKeyData::Manip _target;
+      };
+
+    private:
       const Pathname keyRingPath( const Ring ring ) const
       { return ring == Ring::General ? _general_tmp_dir.path() : _trusted_tmp_dir.path(); }
 
       void importKey( const Pathname & keyfile, const Pathname & keyring );
-      void sendKey( const std::string & id, KeyManagerCtx & source, CachedPublicKeyData::Manip & target );
 
       PublicKey exportKey( const std::string & id, const Pathname & keyring ) const;
       PublicKey exportKey( const PublicKeyData & keyData, const Pathname & keyring ) const;
