@@ -16,6 +16,7 @@
 #include <zypp-core/Pathname.h>
 #include <zypp-common/PublicKey.h>
 #include <zypp-core/ByteArray.h>
+#include <iosfwd>
 
 namespace zypp
 {
@@ -71,6 +72,9 @@ class KeyManagerCtx
 
         /** Tries to import a key from \a keyfile, returns true on success */
         bool importKey(const Pathname & keyfile);
+
+        /** Tries to import a key from the given \a stream, returns true on success */
+        bool importKey(std::istream & stream);
 
         /** Tries to import a key from \a buffer, returns true on success */
         bool importKey(const ByteArray & keydata);

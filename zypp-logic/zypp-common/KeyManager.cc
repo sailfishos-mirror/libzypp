@@ -537,6 +537,24 @@ bool KeyManagerCtx::importKey(const Pathname &keyfile)
   return _pimpl->importKey( data, [&](){ return PathInfo(keyfile).size(); } );
 }
 
+bool KeyManagerCtx::importKey( std::istream & stream )
+{
+  ByteArray keydata;
+
+  constexpr size_t bufSize = 4096;
+  char buf[bufSize];
+  while ( stream.read( buf, sizeof(buf) ) || stream.gcount() ) {
+    keydata.insert( keydata.end(), buf, buf + stream.gcount() );
+  }
+
+  if ( stream.bad() ) {
+    ERR << "Error importing key: failed to read key stream" << endl;
+    return false;
+  }
+
+  return importKey( keydata );
+}
+
 bool KeyManagerCtx::importKey( const ByteArray &keydata )
 {
   GpgmeDataPtr data(nullptr, gpgme_data_release);
